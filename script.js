@@ -2,13 +2,13 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebas
 import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, deleteDoc, doc, updateDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB8sXemNSShtsOTo4apsHOMbqsQvZgDgxg",
-  authDomain: "anompruyjurnalkita.firebaseapp.com",
-  projectId: "anompruyjurnalkita",
-  storageBucket: "anompruyjurnalkita.firebasestorage.app",
-  messagingSenderId: "469933972418",
-  appId: "1:469933972418:web:1392857763a7bf92e5945b",
-  measurementId: "G-Q8ZR6CXEE4"
+    apiKey: "AIzaSyB8sXemNSShtsOTo4apsHOMbqsQvZgDgxg",
+    authDomain: "anompruyjurnalkita.firebaseapp.com",
+    projectId: "anompruyjurnalkita",
+    storageBucket: "anompruyjurnalkita.firebasestorage.app",
+    messagingSenderId: "469933972418",
+    appId: "1:469933972418:web:1392857763a7bf92e5945b",
+    measurementId: "G-Q8ZR6CXEE4"
 };
 
 // Initialize Firebase
@@ -21,11 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const revealElements = document.querySelectorAll('.reveal, .fade-in-up');
     const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
 
-    const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+    const revealOnScroll = new IntersectionObserver(function (entries, observer) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
-                observer.unobserve(entry.target); 
+                observer.unobserve(entry.target);
             }
         });
     }, revealOptions);
@@ -46,9 +46,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- 3. Login System ---
-    const PASSWORDS = {
-        "ano": "Halo, Arkan! ✨",
-        "mpruy": "Halo, Samiya! ✨"
+    const GREETINGS = {
+        "ano": [
+            "Halo, Arkan! ✨",
+            "Wazzup, Arkan! 😎",
+            "Semangat hari ini, Arkan! 🔥",
+            "Hello, Arkan! 🚀"
+        ],
+        "mpruy": [
+            "Halo, Samiya! ✨",
+            "Hola, Samiya! 💃",
+            "Hai MBG! 💖",
+            "مرحباً سامية ✨",
+            "Hai cantik! ✨",
+            "Halo, Mpruy! ✨"
+        ]
     };
 
     const loginOverlay = document.getElementById('loginOverlay');
@@ -61,8 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateGreeting() {
         const loggedInUser = sessionStorage.getItem('loggedInUser');
-        if (loggedInUser && PASSWORDS[loggedInUser]) {
-            if (userGreeting) userGreeting.innerText = PASSWORDS[loggedInUser];
+        if (loggedInUser && GREETINGS[loggedInUser]) {
+            const list = GREETINGS[loggedInUser];
+            const randomGreeting = list[Math.floor(Math.random() * list.length)];
+            if (userGreeting) userGreeting.innerText = randomGreeting;
         }
     }
 
@@ -71,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (floatingAddBtn) floatingAddBtn.style.display = 'block';
         if (musicPlayer) musicPlayer.style.display = 'flex';
         updateGreeting();
-        autoPlayMusic(); 
+        autoPlayMusic();
     } else {
         if (loginOverlay) loginOverlay.style.display = 'flex';
         if (floatingAddBtn) floatingAddBtn.style.display = 'none';
@@ -80,17 +94,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loginBtn.addEventListener('click', () => {
         const pwd = loginPassword.value.toLowerCase();
-        if (PASSWORDS[pwd]) {
+        if (GREETINGS[pwd]) {
             sessionStorage.setItem('isLoggedIn', 'true');
             sessionStorage.setItem('loggedInUser', pwd);
             updateGreeting();
-            autoPlayMusic(); 
+            autoPlayMusic();
 
             loginOverlay.style.opacity = '0';
             setTimeout(() => {
                 loginOverlay.style.display = 'none';
                 floatingAddBtn.style.display = 'block';
-                if(musicPlayer) musicPlayer.style.display = 'flex';
+                if (musicPlayer) musicPlayer.style.display = 'flex';
             }, 500);
         } else {
             loginError.style.display = 'block';
@@ -113,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateMusicInfo() {
         const bgMusic = document.getElementById('bgMusic');
         const musicTitle = document.getElementById('musicTitle');
-        
+
         if (bgMusic && musicTitle) {
             bgMusic.src = playlist[currentSongIndex].src;
             musicTitle.innerText = playlist[currentSongIndex].title;
@@ -140,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function onMusicStarted(btn, title) {
-        if(btn) {
+        if (btn) {
             btn.innerHTML = '<i class="fa-solid fa-pause"></i>';
             btn.classList.remove('blinking');
         }
@@ -261,7 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     canvas.height = height;
                     const ctx = canvas.getContext('2d');
                     ctx.drawImage(img, 0, 0, width, height);
-                    
+
                     // Compress jadi JPEG kualitas 0.6 (sangat hemat data)
                     resolve(canvas.toDataURL('image/jpeg', 0.6));
                 };
@@ -283,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const div = document.createElement('div');
                 div.className = 'gallery-item';
                 div.style.position = 'relative';
-                
+
                 div.innerHTML = `
                     <img src="${photo.url}" alt="Photo" loading="lazy">
                     <button class="delete-btn" onclick="deletePhoto('${docSnap.id}')" title="Hapus Media"><i class="fa-solid fa-trash"></i></button>
@@ -364,31 +378,31 @@ document.addEventListener('DOMContentLoaded', () => {
     subscribeToData();
 
     // --- Firebase Functions ---
-    window.deletePhoto = async function(id) {
-        if(confirm("Yakin ingin menghapus foto ini?")) {
+    window.deletePhoto = async function (id) {
+        if (confirm("Yakin ingin menghapus foto ini?")) {
             try {
                 await deleteDoc(doc(db, "photos", id));
             } catch (e) { console.error(e); }
         }
     };
 
-    window.deleteStory = async function(id) {
-        if(confirm("Yakin ingin menghapus cerita ini?")) {
+    window.deleteStory = async function (id) {
+        if (confirm("Yakin ingin menghapus cerita ini?")) {
             try {
                 await deleteDoc(doc(db, "stories", id));
             } catch (e) { console.error(e); }
         }
     };
 
-    window.deleteWishlist = async function(id) {
-        if(confirm("Yakin ingin menghapus wishlist ini?")) {
+    window.deleteWishlist = async function (id) {
+        if (confirm("Yakin ingin menghapus wishlist ini?")) {
             try {
                 await deleteDoc(doc(db, "wishlists", id));
             } catch (e) { console.error(e); }
         }
     };
 
-    window.toggleWishlist = async function(id, currentChecked) {
+    window.toggleWishlist = async function (id, currentChecked) {
         const isChecking = !currentChecked;
         if (isChecking) {
             const wishlistOverlay = document.getElementById('wishlistSuccessOverlay');
@@ -398,7 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     wishlistOverlay.style.animation = 'fadeOutBg 0.5s forwards';
                     const successBox = document.getElementById('wishlistSuccessBox');
                     if (successBox) successBox.style.animation = 'popOut 0.5s forwards';
-                    
+
                     setTimeout(async () => {
                         await deleteDoc(doc(db, "wishlists", id));
                         wishlistOverlay.style.display = 'none';
@@ -459,7 +473,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const tag = document.getElementById('inputTag').value || 'Memori';
                     const desc = document.getElementById('inputDesc').value || '';
                     const date = document.getElementById('inputDate').value;
-                    
+
                     await addDoc(collection(db, "stories"), {
                         imageUrl: photoData,
                         title,
