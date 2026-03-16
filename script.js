@@ -80,6 +80,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Update sapaan setiap 2 menit (120000 ms)
+    setInterval(updateGreeting, 120000);
+
     if (sessionStorage.getItem('isLoggedIn') === 'true') {
         if (loginOverlay) loginOverlay.style.display = 'none';
         if (floatingAddBtn) floatingAddBtn.style.display = 'block';
