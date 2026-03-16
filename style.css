@@ -1,13 +1,18 @@
 :root {
     /* Color Palette: Dongker, Jeans, & Resistance */
-    --primary-blue: #0f172a; /* Biru Dongker (Navy Blue) */
-    --secondary-blue: #52718e; /* Biru Jeans (Denim Blue) */
-    --accent-blue: #1b65b6; /* Biru Resistance (Vibrant Blue) */
-    --light-bg: #e2e8f0; /* Stronger Grey Background */
+    --primary-blue: #0f172a;
+    /* Biru Dongker (Navy Blue) */
+    --secondary-blue: #52718e;
+    /* Biru Jeans (Denim Blue) */
+    --accent-blue: #1b65b6;
+    /* Biru Resistance (Vibrant Blue) */
+    --light-bg: #e2e8f0;
+    /* Stronger Grey Background */
     --white: #ffffff;
     --text-dark: #0b1120;
     --text-muted: #5b7083;
-    --border-color: #94a3b8; /* Stronger Grey Border */
+    --border-color: #94a3b8;
+    /* Stronger Grey Border */
 
     /* Fonts */
     --font-main: 'Quicksand', sans-serif;
@@ -82,13 +87,15 @@ body {
 }
 
 /* Scroll Animations */
-.reveal, .fade-in-up {
+.reveal,
+.fade-in-up {
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.8s ease-out;
 }
 
-.reveal.active, .fade-in-up.active {
+.reveal.active,
+.fade-in-up.active {
     opacity: 1;
     transform: translateY(0);
 }
@@ -154,8 +161,8 @@ body {
     flex-direction: column;
     justify-content: center;
     background: radial-gradient(circle at top right, rgba(82, 113, 142, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at bottom left, rgba(27, 101, 182, 0.15) 0%, transparent 40%),
-                linear-gradient(135deg, var(--white) 0%, var(--light-bg) 100%);
+        radial-gradient(circle at bottom left, rgba(27, 101, 182, 0.15) 0%, transparent 40%),
+        linear-gradient(135deg, var(--white) 0%, var(--light-bg) 100%);
     padding: 20px;
     position: relative;
     overflow: hidden;
@@ -230,9 +237,22 @@ body {
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
-    40% { transform: translateY(-15px) translateX(-50%); }
-    60% { transform: translateY(-7px) translateX(-50%); }
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0) translateX(-50%);
+    }
+
+    40% {
+        transform: translateY(-15px) translateX(-50%);
+    }
+
+    60% {
+        transform: translateY(-7px) translateX(-50%);
+    }
 }
 
 /* Gallery Section */
@@ -243,11 +263,12 @@ body {
 }
 
 .gallery-item {
-    overflow: visible; /* Biar klip bisa muncul sedikit keluar */
+    overflow: visible;
+    /* Biar klip bisa muncul sedikit keluar */
     background-color: var(--white);
     padding: 10px 10px 35px 10px;
     border-radius: 2px;
-    box-shadow: 2px 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
     position: relative;
 }
@@ -264,18 +285,18 @@ body {
     background: rgba(100, 116, 139, 0.3);
     border-radius: 5px;
     z-index: 2;
-    border-bottom: 2px solid rgba(0,0,0,0.1);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 }
 
-.gallery-grid > :nth-child(even) {
+.gallery-grid> :nth-child(even) {
     transform: rotate(3deg);
 }
 
-.gallery-grid > :nth-child(odd) {
+.gallery-grid> :nth-child(odd) {
     transform: rotate(-3deg);
 }
 
-.gallery-grid > :nth-child(3n) {
+.gallery-grid> :nth-child(3n) {
     transform: rotate(1deg);
 }
 
@@ -301,12 +322,14 @@ body {
     padding: 20px 0;
     display: flex;
     flex-direction: column;
-    gap: -80px; /* Gunakan gap negatif agar card saling menumpuk secara vertikal */
+    gap: 0;
+    /* Gap dinolkan agar margin negatif bekerja maksimal */
 }
 
-/* Membuat efek zigzag yang saling tumpang tindih */
+/* Membuat efek zigzag yang saling tumpang tindih secara vertikal */
 .story-card {
-    margin-top: -100px;
+    margin-top: -150px;
+    /* Diperbesar agar naik lebih tinggi sampai setengah card sebelumnya */
 }
 
 .story-card:first-child {
@@ -338,7 +361,8 @@ body {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     cursor: pointer;
-    width: 45%; /* Menempati setengah layar agar bolak-balik */
+    width: 45%;
+    /* Menempati setengah layar agar bolak-balik */
     z-index: 1;
 }
 
@@ -359,28 +383,30 @@ body {
     font-size: 0.8rem;
     transform: translateY(-50%);
     z-index: 5;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.story-list > :nth-child(odd).story-card {
+.story-list> :nth-child(odd).story-card {
     margin-right: auto;
     align-self: flex-start;
 }
 
-.story-list > :nth-child(odd).story-card::after {
-    right: -13.5%; /* Menempel ke garis tengah (estimasi dari 45% card) */
+.story-list> :nth-child(odd).story-card::after {
+    right: -13.5%;
+    /* Menempel ke garis tengah (estimasi dari 45% card) */
 }
 
-.story-list > :nth-child(even).story-card {
+.story-list> :nth-child(even).story-card {
     margin-left: auto;
     align-self: flex-end;
 }
 
-.story-list > :nth-child(even).story-card::after {
-    left: -13.5%; /* Menempel ke garis tengah */
+.story-list> :nth-child(even).story-card::after {
+    left: -13.5%;
+    /* Menempel ke garis tengah */
 }
 
-.story-list > :nth-child(even) {
+.story-list> :nth-child(even) {
     border-radius: 25px 4px 25px 4px;
 }
 
@@ -396,7 +422,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 15px; /* Memberi efek frame foto */
+    padding: 15px;
+    /* Memberi efek frame foto */
     position: relative;
     border-right: 2px dashed var(--border-color);
 }
@@ -413,7 +440,7 @@ body {
     border-radius: 3px;
     transform: rotate(-45deg);
     z-index: 2;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .story-image img,
@@ -472,7 +499,7 @@ body {
     border-left: 3px solid var(--accent-blue);
     border-radius: 4px;
     padding: 30px 40px;
-    box-shadow: 4px 6px 15px rgba(0,0,0,0.08);
+    box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.08);
     position: relative;
     margin-top: 20px;
 }
@@ -486,7 +513,7 @@ body {
     width: 120px;
     height: 35px;
     background: rgba(226, 232, 240, 0.9);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 2px;
     z-index: 10;
 }
@@ -572,7 +599,8 @@ body {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 10001; /* Di atas login overlay/modal */
+    z-index: 10001;
+    /* Di atas login overlay/modal */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -588,7 +616,7 @@ body {
     border: 2px dashed var(--accent-blue);
     max-width: 90%;
     width: 450px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
     animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
@@ -598,7 +626,7 @@ body {
     object-fit: contain;
     margin-bottom: 15px;
     display: inline-block;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
 }
 
 .success-text {
@@ -608,24 +636,50 @@ body {
 }
 
 @keyframes fadeInBg {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes fadeOutBg {
-    from { opacity: 1; }
-    to { opacity: 0; }
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
 }
 
 @keyframes popIn {
-    from { opacity: 0; transform: scale(0.8); }
-    to { opacity: 1; transform: scale(1); }
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 @keyframes popOut {
-    from { opacity: 1; transform: scale(1); }
-    to { opacity: 0; transform: scale(0.8); }
-} /* Footer */
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+/* Footer */
 .footer {
     text-align: center;
     padding: 30px 0;
@@ -657,7 +711,7 @@ body {
     background: var(--light-bg);
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     text-align: center;
     max-width: 400px;
     width: 90%;
@@ -713,9 +767,11 @@ body {
     bottom: 20px;
     left: 20px;
     z-index: 1000;
-    display: none; /* muncul setelah login */
+    display: none;
+    /* muncul setelah login */
     align-items: center;
-    gap: 8px; /* Sedikit lebih rapat */
+    gap: 8px;
+    /* Sedikit lebih rapat */
 }
 
 .bgm-btn {
@@ -754,9 +810,20 @@ body {
 }
 
 @keyframes pulse {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(27, 101, 182, 0.7); }
-    70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(27, 101, 182, 0); }
-    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(27, 101, 182, 0); }
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(27, 101, 182, 0.7);
+    }
+
+    70% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 15px rgba(27, 101, 182, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(27, 101, 182, 0);
+    }
 }
 
 .bgm-btn:hover {
@@ -800,7 +867,7 @@ body {
     width: 100%;
     border-radius: 15px;
     margin-bottom: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .detail-header {
@@ -856,11 +923,12 @@ body {
     color: var(--white);
     border: none;
     font-size: 1.5rem;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     z-index: 100;
     transition: transform 0.3s, background 0.3s;
-    display: none; /* hidden until logged in */
+    display: none;
+    /* hidden until logged in */
 }
 
 .floating-add-btn:hover {
@@ -869,13 +937,13 @@ body {
 }
 
 .modal {
-    display: none; 
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 10000;
     justify-content: center;
     align-items: center;
@@ -975,22 +1043,54 @@ body {
 
 /* Responsive */
 @media screen and (max-width: 768px) {
-    .nav-links { display: none; } /* Simplified navbar for mobile without JS */
-    
+    .nav-links {
+        display: none;
+    }
+
+    /* Simplified navbar for mobile without JS */
+
     .user-greeting {
         font-size: 1.1rem;
         margin-left: 10px;
     }
-    
-    .hero .title { font-size: 2.5rem; }
-    
-    .story-card { flex-direction: column; width: 100% !important; margin: 0 !important; }
-    
-    .story-list::before { left: 20px; transform: translateX(0); }
-    .story-card::after { left: -8px !important; top: 30px; transform: none; width: 25px; height: 25px; font-size: 0.6rem; }
-    .story-content { padding-left: 40px; }
-    
-    .story-image { flex: 0 0 200px; }
-    
-    .floating-add-btn { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 1.2rem; }
+
+    .hero .title {
+        font-size: 2.5rem;
+    }
+
+    .story-card {
+        flex-direction: column;
+        width: 100% !important;
+        margin: 0 !important;
+    }
+
+    .story-list::before {
+        left: 20px;
+        transform: translateX(0);
+    }
+
+    .story-card::after {
+        left: -8px !important;
+        top: 30px;
+        transform: none;
+        width: 25px;
+        height: 25px;
+        font-size: 0.6rem;
+    }
+
+    .story-content {
+        padding-left: 40px;
+    }
+
+    .story-image {
+        flex: 0 0 200px;
+    }
+
+    .floating-add-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
 }
