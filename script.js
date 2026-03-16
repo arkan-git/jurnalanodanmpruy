@@ -73,10 +73,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateGreeting() {
         const loggedInUser = sessionStorage.getItem('loggedInUser');
-        if (loggedInUser && GREETINGS[loggedInUser]) {
+        if (loggedInUser && GREETINGS[loggedInUser] && userGreeting) {
             const list = GREETINGS[loggedInUser];
-            const randomGreeting = list[Math.floor(Math.random() * list.length)];
-            if (userGreeting) userGreeting.innerText = randomGreeting;
+            let currentGreeting = userGreeting.innerText;
+
+            // Cari sapaan baru yang berbeda dari yang sekarang (kalau list > 1)
+            let filteredList = list.filter(g => g !== currentGreeting);
+            let finalSelectionList = filteredList.length > 0 ? filteredList : list;
+            const randomGreeting = finalSelectionList[Math.floor(Math.random() * finalSelectionList.length)];
+
+            // Efek transisi halus
+            userGreeting.style.opacity = '0';
+            setTimeout(() => {
+                userGreeting.innerText = randomGreeting;
+                userGreeting.style.opacity = '1';
+            }, 500);
         }
     }
 
@@ -87,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (loginOverlay) loginOverlay.style.display = 'none';
         if (floatingAddBtn) floatingAddBtn.style.display = 'block';
         if (musicPlayer) musicPlayer.style.display = 'flex';
-        updateGreeting();
+        updateGreeting(); // Jalankan sapaan acak saat pertama kali load
         autoPlayMusic();
     } else {
         if (loginOverlay) loginOverlay.style.display = 'flex';
