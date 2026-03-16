@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jurnal Kita</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+    <!-- Login Overlay -->
+    <div id="loginOverlay" class="login-overlay">
+        <div class="login-box">
+            <h2 class="login-title">Masuk ke Jurnal Kita</h2>
+            <p class="login-desc">Silakan masukkan password untuk melihat jurnal ini.</p>
+            <input type="password" id="loginPassword" class="login-input" placeholder="Masukkan password...">
+            <button id="loginBtn" class="login-btn">Masuk</button>
+            <p id="loginError" class="login-error">Password salah, coba lagi!</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <span class="logo">Main kita</span>
+            <span id="userGreeting" class="user-greeting"></span>
+            <ul class="nav-links">
+                <li><a href="#galeri">Galeri Foto</a></li>
+                <li><a href="#cerita">Cerita Main</a></li>
+                <li><a href="#wishlist">Wishlist</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Floating Add Button -->
+    <button id="floatingAddBtn" class="floating-add-btn" title="Tambahkan Cerita/Foto Baru">
+        <i class="fa-solid fa-plus"></i>
+    </button>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="hero-content fade-in-up">
+            <h1 class="title">Ano & Mpruy</h1>
+            <p class="subtitle">Sebuah tempat untuk menyimpan memori, cerita, dan hal-hal yang ingin kita lakukan.</p>
+        </div>
+        <div class="scroll-indicator fade-in-up">
+            <a href="#galeri"><i class="fa-solid fa-arrow-down"></i></a>
+        </div>
+    </header>
+
+    <!-- Galeri Foto Section -->
+    <section class="section bg-light" id="galeri">
+        <div class="container reveal">
+            <h2 class="section-title">Galeri Foto</h2>
+            <p class="section-subtitle">Kumpulan momen yang sempat diabadikan.</p>
+
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Data akan dimasukkan secara dinamis lewat Input Modal (+) -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cerita Main Kita Section -->
+    <section class="section" id="cerita">
+        <div class="container reveal">
+            <h2 class="section-title">Cerita Main Kita</h2>
+            <p class="section-subtitle">Beberapa tempat dan aktivitas yang pernah kita coba.</p>
+
+            <div class="story-list" id="storyList">
+                <!-- Data akan dimasukkan secara dinamis lewat Input Modal (+) -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Wishlist Kita Section -->
+    <section class="section bg-light" id="wishlist">
+        <div class="container reveal">
+            <h2 class="section-title">Wishlist Kita</h2>
+            <p class="section-subtitle">Daftar tempat atau hal yang ingin kita lakukan nanti.</p>
+
+            <div class="wishlist-container">
+                <ul class="wishlist" id="wishlistContainer">
+                    <!-- Data dummy dihapus, akan diisi secara dinamis -->
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Jurnal Kita.</p>
+        </div>
+    </footer>
+    <!-- Pesan Berhasil Wishlist Popup -->
+    <div id="wishlistSuccessOverlay" class="wishlist-success-overlay" style="display: none;">
+        <div id="wishlistSuccessBox" class="wishlist-success-box">
+            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f389/512.webp" alt="Berhasil" class="success-img">
+            <p class="success-text">Setiap wishlist kalian membangun masa depan, maka ayo buat wishlist baru</p>
+        </div>
+    </div>
+
+    <!-- Pesan Berhasil Menyimpan Popup -->
+    <div id="saveSuccessOverlay" class="wishlist-success-overlay" style="display: none;">
+        <div id="saveSuccessBox" class="wishlist-success-box">
+            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.webp" alt="Berhasil Simpan"
+                class="success-img">
+            <p class="success-text" style="font-family: var(--font-heading); font-size: 2rem;">Berhasil menyimpan,
+                semoga bahagia selalu <i class="fa-solid fa-heart" style="color: #e63946;"></i></p>
+        </div>
+    </div>
+
+    <!-- Floating Music Player -->
+    <div class="music-player" id="musicPlayer">
+        <button id="musicToggleBtn" class="bgm-btn blinking" title="Play / Pause">
+            <i class="fa-solid fa-play"></i>
+        </button>
+        <button id="musicNextBtn" class="bgm-btn small-btn" title="Lagu Berikutnya">
+            <i class="fa-solid fa-forward-step"></i>
+        </button>
+        <span id="musicTitle" class="music-title-text">Bercinta lewat kata - Donne Maula</span>
+        <audio id="bgMusic" src="music.mp3" preload="auto" autoplay></audio>
+    </div>
+
+    <!-- Modal Tambah Cerita/Foto -->
+    <div id="addModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeAddModal">&times;</span>
+            <h2 class="modal-title">Tambah Momen Baru</h2>
+
+            <div class="form-group">
+                <label for="inputType">Tipe Momen</label>
+                <select id="inputType" class="modal-input">
+                    <option value="foto">Hanya Galeri Foto</option>
+                    <option value="cerita">Cerita Main + Foto + Galeri</option>
+                    <option value="cerita_saja">Cerita Main (Tanpa Foto)</option>
+                    <option value="wishlist">Wishlist</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="imageGroup">
+                <label for="inputImage">Pilih Foto / Video</label>
+                <input type="file" id="inputImage" accept="image/*,video/*" class="modal-input">
+            </div>
+
+            <div class="form-group" id="titleGroup" style="display:none;">
+                <label for="inputTitle">Judul Cerita</label>
+                <input type="text" id="inputTitle" class="modal-input" placeholder="Contoh: Ngopi Sore, Jalan-jalan...">
+            </div>
+
+            <div class="form-group" id="tagGroup" style="display:none;">
+                <label for="inputTag">Tag / Kategori</label>
+                <input type="text" id="inputTag" class="modal-input" placeholder="Contoh: Cafe, Taman...">
+            </div>
+
+            <div class="form-group" id="descGroup" style="display:none;">
+                <label for="inputDesc">Cerita Hari Itu</label>
+                <textarea id="inputDesc" class="modal-input" rows="4"
+                    placeholder="Ceritakan keseruan hari itu..."></textarea>
+            </div>
+
+            <div class="form-group" id="dateGroup">
+                <label for="inputDate">Tanggal Momen</label>
+                <input type="date" id="inputDate" class="modal-input">
+            </div>
+
+            <div class="form-group" id="authorGroup">
+                <label for="inputAuthor">Siapa Penulisnya?</label>
+                <select id="inputAuthor" class="modal-input">
+                    <option value="" disabled selected>-- Pilih Penulis --</option>
+                    <option value="Arkan">Arkan</option>
+                    <option value="Samiya">Samiya</option>
+                </select>
+            </div>
+
+            <button id="saveBtn" class="save-btn">Simpan Momen</button>
+        </div>
+    </div>
+
+    <!-- Modal Detail Cerita -->
+    <div id="storyDetailModal" class="modal">
+        <div class="modal-content story-detail-content">
+            <span class="close-modal" id="closeStoryDetail">&times;</span>
+            <div id="storyDetailBody">
+                <!-- Isi detail cerita akan dimasukkan via JS -->
+            </div>
+            <button class="back-btn" id="backToJournal">Kembali ke Jurnal</button>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
