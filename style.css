@@ -298,10 +298,10 @@ body {
 /* Story Section - Timeline Mode */
 .story-list {
     position: relative;
-    padding: 40px 0;
+    padding: 20px 0;
     display: flex;
     flex-direction: column;
-    gap: 60px;
+    gap: 30px;
 }
 
 /* Garis Putus-putus Tengah */
