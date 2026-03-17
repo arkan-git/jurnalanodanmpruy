@@ -49,9 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const GREETINGS = {
         "ano": [
             "Halo, Arkan! ✨",
-            "Wazzup, Arkan! 😎",
-            "Semangat hari ini, Arkan! 🔥",
-            "Hello, Arkan! 🚀"
+            "Hai, Genteng! 😎",
+            "Halo, Rusa! 🔥",
+            "Hai, Capruk! 🚀",
+            "Halo, Ano! 🚀"
         ],
         "mpruy": [
             "Halo, Samiya! ✨",
@@ -92,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Update sapaan setiap 2 menit (120000 ms)
-    setInterval(updateGreeting, 60000);
+    setInterval(updateGreeting, 120000);
 
     if (sessionStorage.getItem('isLoggedIn') === 'true') {
         if (loginOverlay) loginOverlay.style.display = 'none';
