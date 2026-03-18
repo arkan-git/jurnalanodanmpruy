@@ -53,7 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
             "Halo, Rusa! 🔥",
             "Hai, Capruk! 🚀",
             "Halo, Ano! 🚀",
-            "Halo, Bestie! ✨"
+            "Halo, Bestie! ✨",
+            "مرحابا يا حبيبي",
+            "Hai MSG! 💖",
         ],
         "mpruy": [
             "Halo, Samiya! ✨",
