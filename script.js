@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "Hai, Capruk! 🚀",
             "Halo, Ano! 🚀",
             "Halo, Bestie! ✨",
-            "مرحابا يا حبيبي",
+            "مرحباً يا حبيبي",
             "Hai MSG! 💖",
         ],
         "mpruy": [
@@ -64,7 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "مرحباً سامية ✨",
             "Hai cantik! ✨",
             "Halo, Mpruy! ✨",
-            "Halo, Bestie! ✨"
+            "Halo, Bestie! ✨",
+            "مرحباً يا حبيبتي"
         ]
     };
 
